@@ -16,7 +16,7 @@ I will throw together some presets for everything i use myself, and am willing t
 To use something like foot, just do ``programs.foot.colors = config.colorschemes.everforest.foot`` once you have imported the flake module.
 
 Currently avaliable presets:
-* Zathura
+* zathura
 * foot
 
 ## Install
