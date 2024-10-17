@@ -58,5 +58,10 @@ Example `home.nix` file:
       type = "light";
       variant = "medium";
   };
+
+  programs.foot = {
+    enable = true;
+    colors = config.colorschemes.everforest.foot;
+  };
 }
 ```
