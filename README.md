@@ -15,6 +15,10 @@ You can read about the avaliable colors [here](https://github.com/sainnhe/everfo
 I will throw together some presets for everything i use myself, and am willing to add others as well. 
 To use something like foot, just do ``programs.foot.colors = config.colorschemes.everforest.foot`` once you have imported the flake module.
 
+Currently avaliable presets:
+* zathura
+* foot
+
 ## Install
 Example `flake.nix` file:
 ```
