@@ -2,7 +2,7 @@
   light =
     let
       fg = {
-        foreground = "DC6A72";
+        fg = "DC6A72";
         red = "F85552";
         orange = "F57D26";
         yellow = "DFA000";
