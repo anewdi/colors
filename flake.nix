@@ -1,16 +1,10 @@
 {
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
   outputs =
-    inputs:
-    let
-      system = "x86_64-linux";
-      pkgs = inputs.nixpkgs.legacyPackages.${system};
-    in
+    { self, ... }:
     {
       homeManagerModules = {
-        default = inputs.self.homeManagerModules.everforest;
-        everforest = import ./hm-module.nix inputs.self;
+        default = self.homeManagerModules.everforest;
+        everforest = import ./hm-module.nix self;
       };
     };
 }
