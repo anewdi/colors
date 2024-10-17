@@ -6,7 +6,7 @@ colorschemes.everfores.variant = "medium" # default
 ```
 
 ## Colors
-You may then access the colors with:
+You may then access the colors with (read more about avaliable colors [here](https://github.com/sainnhe/everforest/blob/master/palette.md#highlights):
 ```
 config.colorschemes.everforest.colors.yourcolor
 ```
