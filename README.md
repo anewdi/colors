@@ -1,4 +1,4 @@
-*Obviously this is not my colorscheme. All credit to [Sainhe](https://github.com/sainnhe/everforest). This is just a convenient way for nix users to acces the colorscheme.*
+*Obviously this is not my colorscheme. All credit to [Sainhe](https://github.com/sainnhe/everforest). This is just a convenient way for nix users to access the colorscheme.*
 
 A simple flake which allows you to easily use the everforest theme in you config. 
 Chose type(light/dark) and variant(hard/medium/soft) with the the following options 
