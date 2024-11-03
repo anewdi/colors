@@ -46,5 +46,6 @@ in
     alacritty = mkscheme (import ./themes/alacritty.nix full);
     wezterm = mkscheme (import ./themes/wezterm.nix full);
     zathura = mkscheme (import ./themes/zathura.nix full);
+    zellij = mkscheme (import ./themes/zellij.nix full);
   };
 }
