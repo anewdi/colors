@@ -44,6 +44,7 @@ in
 
     foot = mkscheme (import ./themes/foot.nix full);
     alacritty = mkscheme (import ./themes/alacritty.nix full);
+    wezterm = mkscheme (import ./themes/wezterm.nix full);
     zathura = mkscheme (import ./themes/zathura.nix full);
   };
 }
