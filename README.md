@@ -29,7 +29,7 @@ Currently avaliable presets:
 * foot
 * alacritty
 * zellij
-* wezterm (Not properly tested yet)
+* wezterm
 
 ## Install
 Example `flake.nix` file:
