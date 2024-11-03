@@ -78,5 +78,14 @@ Example `home.nix` file:
     enable = true;
     colors = config.colorschemes.everforest.foot;
   };
+
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      window = {
+        decorations = "None";
+      };
+    } // config.colorschemes.everforest.alacritty;
+  };
 }
 ```
