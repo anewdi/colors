@@ -11,13 +11,21 @@ You may then access the colors with:
 config.colorschemes.everforest.colors.yourcolor
 ```
 You can read about the avaliable colors [here](https://github.com/sainnhe/everforest/blob/master/palette.md#highlights)
+
 ## Presets
-I will throw together some presets for everything i use myself, and am willing to add others as well. 
-To use something like foot, just do ``programs.foot.colors = config.colorschemes.everforest.foot`` once you have imported the flake module.
+Will throw together more presets when i have time. The goal is to have support for almost all major terminals and IDEs/text editors. To use something like foot, just do ``programs.foot.colors = config.colorschemes.everforest.foot`` once you have imported the flake module. 
+
+The option is an attrset of colors so it can also be merged like this:
+```
+programs.alacritty.settings = {
+    some.config = true;
+} // config.colorschemes.everforest.alacritty;
+```
 
 Currently avaliable presets:
 * zathura
 * foot
+* alacritty
 
 ## Install
 Example `flake.nix` file:

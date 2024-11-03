@@ -1,4 +1,4 @@
-colors: with colors; {
+colors: with colors.nohash; {
   background = bg0;
   foreground = fg;
   regular0 = bg3;
