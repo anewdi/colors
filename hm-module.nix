@@ -3,11 +3,11 @@ self:
 let
   cfg = config.colorschemes.everforest;
   everforest = (import ./colors.nix).${cfg.type}.${cfg.variant};
-  hash = lib.mapAttrs (name: color: "#" + color) everforest;
+  nohash = lib.mapAttrs (name: color: lib.removePrefix "#" color) everforest;
 
   full = {
-    hash = hash;
-    nohash = everforest;
+    hash = everforest;
+    nohash = nohash;
   };
 
   mkscheme =
