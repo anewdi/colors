@@ -1,25 +1,50 @@
 self:
 { lib, config, ... }:
 let
-  cfg = config.colorschemes.everforest;
-  everforest = (import ./colors.nix).${cfg.type}.${cfg.variant};
-  nohash = lib.mapAttrs (name: color: lib.removePrefix "#" color) everforest;
+  cfg = config.colorscheme.everforest;
 
-  full = {
-    hash = everforest;
-    nohash = nohash;
+  # Some apps use without the hashes, so make both accesible
+  full = rec {
+    hash = (import ./colors.nix).${cfg.type}.${cfg.variant};
+    nohash = lib.mapAttrs (name: color: lib.removePrefix "#" color) hash;
   };
 
+  # Function to create uniq option (so that user does not accidentaly override)
   mkscheme =
-    palette:
+    name:
     lib.mkOption {
-      type = with lib.types; anything;
-      default = palette;
-      description = "Everforest colorscheme";
+      type = with lib.types; uniq anything;
+      default = { };
+      description = "Everforest colorscheme for ${name}";
     };
+
+  themes = [
+    "alacritty"
+    "wezterm"
+    "zathura"
+    "zellij"
+    "foot"
+  ];
+
+  # Create options for every theme
+  initoptions = builtins.listToAttrs (
+    builtins.map (theme: {
+      name = theme;
+      value = mkscheme "${theme}";
+    }) themes
+  );
+
+  # Map the themes to their name in an attrset
+  setscheme = builtins.listToAttrs (
+    builtins.map (theme: {
+      name = theme;
+      value = import ./themes/${theme}.nix full;
+    }) themes
+  );
 in
 {
-  options.colorschemes.everforest = {
+  options.colorscheme.everforest = {
+    # Options to set variant and types
     type = lib.mkOption {
       type =
         with lib.types;
@@ -40,12 +65,12 @@ in
       default = "medium";
     };
 
-    colors = mkscheme everforest;
+    # Create the options
+    colors = mkscheme "colors";
+  } // initoptions;
 
-    foot = mkscheme (import ./themes/foot.nix full);
-    alacritty = mkscheme (import ./themes/alacritty.nix full);
-    wezterm = mkscheme (import ./themes/wezterm.nix full);
-    zathura = mkscheme (import ./themes/zathura.nix full);
-    zellij = mkscheme (import ./themes/zellij.nix full);
+  # Set the options so they can not be overridden
+  config.colorscheme.everforest = setscheme // {
+    colors = full.hash;
   };
 }
