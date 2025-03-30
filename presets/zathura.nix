@@ -11,11 +11,9 @@ colors: with colors.hash; {
   notification-error-fg = foreground;
   notification-warning-bg = gray2;
   notification-warning-fg = foreground;
-  highlight-color = regular1;
-  highlight-active-color = regular1;
   completion-bg = gray2;
   completion-fg = foreground;
-  completion-highlight-fg = background;
+  completion-highlight-fg = regular1;
   completion-highlight-bg = gray2;
   recolor-lightcolor = background;
   recolor-darkcolor = foreground;
