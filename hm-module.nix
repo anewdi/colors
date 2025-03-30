@@ -48,26 +48,26 @@ in
     # Options to set variant and types
     type = lib.mkOption {
       type = lib.types.enum [
-          "dark"
-          "light"
-        ];
+        "dark"
+        "light"
+      ];
       default = "dark";
     };
     variant = lib.mkOption {
       type = lib.types.enum [
-          "hard"
-          "medium"
-          "soft"
-        ];
+        "hard"
+        "medium"
+        "soft"
+      ];
       default = "medium";
     };
-    scheme = lib.mkOption{
+    scheme = lib.mkOption {
       type = lib.types.enum [
-          "mellow"
-          "everforest"
+        "mellow"
+        "everforest"
       ];
       default = "mellow";
-    }
+    };
 
     # Create the options
     colors = mkscheme "colors";
@@ -75,6 +75,6 @@ in
 
   # Set the options so they can not be overridden
   config.colorscheme = setscheme // {
-      colors = full.hash;
+    colors = full.hash;
   };
 }
