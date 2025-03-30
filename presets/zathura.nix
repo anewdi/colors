@@ -1,5 +1,5 @@
 colors: with colors.hash; {
-  default-bg = gray2;
+  default-bg = regular0;
   default-fg = foreground;
   statusbar-fg = foreground;
   statusbar-bg = gray2;
@@ -11,7 +11,7 @@ colors: with colors.hash; {
   notification-error-fg = foreground;
   notification-warning-bg = gray2;
   notification-warning-fg = foreground;
-  highlight-color = background;
+  highlight-color = regular1;
   highlight-active-color = regular1;
   completion-bg = gray2;
   completion-fg = foreground;
