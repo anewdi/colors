@@ -165,5 +165,5 @@ let
     };
 in
 {
-  inherit ${cfg.type}.${cfg.variant};
+    theme = ${cfg.type}.${cfg.variant};
 }

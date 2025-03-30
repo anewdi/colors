@@ -5,7 +5,7 @@ let
 
   # Some applications use without the hashes, so make both accesible
   full = rec {
-    hash = import ./schemes/${cfg.scheme}.nix cfg;
+    hash = (import ./schemes/${cfg.scheme}.nix cfg.type).theme;
     nohash = lib.mapAttrs (name: color: lib.removePrefix "#" color) hash;
   };
 
@@ -38,7 +38,7 @@ let
   setscheme = builtins.listToAttrs (
     builtins.map (theme: {
       name = theme;
-      value = import ./themes/${theme}.nix full;
+      value = import ./presets/${theme}.nix full;
     }) themes
   );
 in
