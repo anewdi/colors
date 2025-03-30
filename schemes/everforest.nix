@@ -1,18 +1,24 @@
-{
+theme:
+let
   light =
     let
       fg = {
-        fg = "#5C6A72";
-        red = "#F85552";
+        foreground = "#5C6A72";
+        regular0 = "#5c6a72";
+        regular1 = "#F85552";
+        regular2 = "#8DA101";
+        regular3 = "#DFA000";
+        regular4 = "#3A94C5";
+        regular5 = "#DF69BA";
+        regular6 = "#35A77C";
+        regular7 = "#E8E5D5";
+
         orange = "#F57D26";
-        yellow = "#DFA000";
-        green = "#8DA101";
-        aqua = "#35A77C";
-        blue = "#3A94C5";
-        purple = "#DF69BA";
+
         grey0 = "#A6B0A0";
         grey1 = "#939F91";
         grey2 = "#829181";
+
         statusline1 = "#93B259";
         statusline2 = "#708089";
         statusline3 = "#E66868";
@@ -22,7 +28,7 @@
       hard = (
         {
           bg_dim = "#F2EFDF";
-          bg0 = "#FFFBEF";
+          background = "#FFFBEF";
           bg1 = "#F8F5E4";
           bg2 = "#F2EFDF";
           bg3 = "#EDEADA";
@@ -39,7 +45,7 @@
       medium = (
         {
           bg_dim = "#EFEBD4";
-          bg0 = "#FDF6E3";
+          background = "#FDF6E3";
           bg1 = "#F4F0D9";
           bg2 = "#EFEBD4";
           bg3 = "#E6E2CC";
@@ -56,7 +62,7 @@
       soft = (
         {
           bg_dim = "#E5DFC5";
-          bg0 = "#F3EAD3";
+          background = "#F3EAD3";
           bg1 = "#EAE4CA";
           bg2 = "#E5DFC5";
           bg3 = "#DDD8BE";
@@ -74,17 +80,31 @@
   dark =
     let
       fg = {
-        fg = "#D3C6AA";
-        red = "#E67E80";
+        foreground = "#D3C6AA";
+        regular0 = "#4b565c";
+        regular1 = "#E67E80";
+        regular2 = "#A7C080";
+        regular3 = "#DBBC7F";
+        regular4 = "#7FBBB3";
+        regular5 = "#D699B6";
+        regular6 = "#83C092";
+        regular7 = "#D3C6AA";
+
+        bright0 = "#414B50";
+        bright1 = "#E67E80";
+        bright2 = "#A7C080";
+        bright3 = "#DBBC7F";
+        bright4 = "#7FBBB3";
+        bright5 = "#D699B6";
+        bright6 = "#83C092";
+        bright7 = "#D3C6AA";
+
         orange = "#E69875";
-        yellow = "#DBBC7F";
-        green = "#A7C080";
-        aqua = "#83C092";
-        blue = "#7FBBB3";
-        purple = "#D699B6";
+
         grey0 = "#7A8478";
         grey1 = "#859289";
         grey2 = "#9DA9A0";
+
         statusline1 = "#A7C080";
         statusline2 = "#D3C6AA";
         statusline3 = "#E67E80";
@@ -94,7 +114,7 @@
       hard = (
         {
           bg_dim = "#1E2326";
-          bg0 = "#272E33";
+          background = "#272E33";
           bg1 = "#2E383C";
           bg2 = "#374145";
           bg3 = "#414B50";
@@ -111,7 +131,7 @@
       medium = (
         {
           bg_dim = "#232A2E";
-          bg0 = "#2D353B";
+          background = "#2D353B";
           bg1 = "#343F44";
           bg2 = "#3D484D";
           bg3 = "#475258";
@@ -128,7 +148,7 @@
       soft = (
         {
           bg_dim = "#293136";
-          bg0 = "#333C43";
+          background = "#333C43";
           bg1 = "#3A464C";
           bg2 = "#434F55";
           bg3 = "#4D5960";
@@ -143,4 +163,7 @@
         // fg
       );
     };
+in
+{
+  inherit ${cfg.type}.${cfg.variant};
 }

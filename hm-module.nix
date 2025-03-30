@@ -1,21 +1,21 @@
 self:
 { lib, config, ... }:
 let
-  cfg = config.colorscheme.everforest;
+  cfg = config.colorscheme;
 
-  # Some apps use without the hashes, so make both accesible
+  # Some applications use without the hashes, so make both accesible
   full = rec {
-    hash = (import ./colors.nix).${cfg.type}.${cfg.variant};
+    hash = import ./colors/${cfg.scheme}.nix cfg;
     nohash = lib.mapAttrs (name: color: lib.removePrefix "#" color) hash;
   };
 
-  # Function to create uniq option (so that user does not accidentaly override)
+  # Function to create uniq option (so that colors are not overridable)
   mkscheme =
     name:
     lib.mkOption {
       type = with lib.types; uniq anything;
       default = { };
-      description = "Everforest colorscheme for ${name}";
+      description = "${cfg.scheme} colorscheme for ${name}";
     };
 
   themes = [
@@ -43,34 +43,38 @@ let
   );
 in
 {
-  options.colorscheme.everforest = {
+
+  options.colorscheme = {
     # Options to set variant and types
     type = lib.mkOption {
-      type =
-        with lib.types;
-        enum [
+      type = lib.types.enum [
           "dark"
           "light"
         ];
       default = "dark";
     };
     variant = lib.mkOption {
-      type =
-        with lib.types;
-        enum [
+      type = lib.types.enum [
           "hard"
           "medium"
           "soft"
         ];
       default = "medium";
     };
+    scheme = lib.mkOption{
+      type = lib.types.enum [
+          "mellow"
+          "everforest"
+      ];
+      default = "mellow";
+    }
 
     # Create the options
     colors = mkscheme "colors";
   } // initoptions;
 
   # Set the options so they can not be overridden
-  config.colorscheme.everforest = setscheme // {
-    colors = full.hash;
+  config.colorscheme = setscheme // {
+      colors = full.hash;
   };
 }
