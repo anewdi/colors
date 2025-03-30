@@ -1,7 +1,12 @@
-theme:
+{
+  lib,
+  variant,
+  type,
+  ...
+}:
 let
   all = {
-    light =
+    "light" =
       let
         fg = {
           foreground = "#5C6A72";
@@ -78,7 +83,7 @@ let
           // fg
         );
       };
-    dark =
+    "dark" =
       let
         fg = {
           foreground = "#D3C6AA";
@@ -129,7 +134,7 @@ let
           }
           // fg
         );
-        medium = (
+        "medium" = (
           {
             bg_dim = "#232A2E";
             background = "#2D353B";
@@ -167,5 +172,6 @@ let
   };
 in
 {
-  theme = all.${theme.type}.${theme.variant};
+  green = "#ee";
 }
+#lib.attrsets.filterAttrs (n: v: n == variant) (lib.attrsets.filterAttrs (n: v: n == type) all)

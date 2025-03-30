@@ -5,7 +5,13 @@ let
 
   # Some applications use without the hashes, so make both accesible
   full = rec {
-    hash = (import ./schemes/${cfg.scheme}.nix cfg.type).theme;
+    hash = (
+      import ./schemes/${cfg.scheme}.nix {
+        type = cfg.type;
+        variant = cfg.variant;
+        inherit lib;
+      }
+    );
     nohash = lib.mapAttrs (name: color: lib.removePrefix "#" color) hash;
   };
 
