@@ -5,7 +5,7 @@ let
 
   # Some applications use without the hashes, so make both accesible
   full = rec {
-    hash = import ./colors/${cfg.scheme}.nix cfg;
+    hash = import ./schemes/${cfg.scheme}.nix cfg;
     nohash = lib.mapAttrs (name: color: lib.removePrefix "#" color) hash;
   };
 
