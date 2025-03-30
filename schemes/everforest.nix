@@ -171,7 +171,4 @@ let
       };
   };
 in
-{
-  green = "#ee";
-}
-#lib.attrsets.filterAttrs (n: v: n == variant) (lib.attrsets.filterAttrs (n: v: n == type) all)
+lib.attrsets.filterAttrs (n: v: n == variant) (lib.attrsets.filterAttrs (n: v: n == type) all)
