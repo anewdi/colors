@@ -21,9 +21,9 @@ let
 
           orange = "#F57D26";
 
-          grey0 = "#A6B0A0";
-          grey1 = "#939F91";
-          grey2 = "#829181";
+          gray0 = "#A6B0A0";
+          gray1 = "#939F91";
+          gray2 = "#829181";
 
           statusline1 = "#93B259";
           statusline2 = "#708089";
@@ -107,9 +107,9 @@ let
 
           orange = "#E69875";
 
-          grey0 = "#7A8478";
-          grey1 = "#859289";
-          grey2 = "#9DA9A0";
+          gray0 = "#7A8478";
+          gray1 = "#859289";
+          gray2 = "#9DA9A0";
 
           statusline1 = "#A7C080";
           statusline2 = "#D3C6AA";
