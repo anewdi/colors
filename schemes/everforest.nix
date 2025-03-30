@@ -171,4 +171,4 @@ let
       };
   };
 in
-lib.attrsets.filterAttrs (n: v: n == type && builtins.hasAttr variant v) all
+builtins.getAttr variant (builtins.getAttr type all)
