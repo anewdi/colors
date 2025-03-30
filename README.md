@@ -1,30 +1,23 @@
-*Obviously this is not my colorscheme. All credit to [Sainhe](https://github.com/sainnhe/everforest). This is just a convenient way for nix users to access the colorscheme.*
+A simple flake which I use to store the themes I use.
+Chose colorscheme, type(light/dark) and variant(hard/medium/soft) with the the following options
+```
+colorscheme.scheme = "mellow" #default
+colorscheme.type = "dark" #default, only has an effect for everforest
+colorscheme.variant = "medium" # default, only has an effect for everforest
+```
 
-A simple flake which allows you to easily use the everforest theme in you config. 
-Chose type(light/dark) and variant(hard/medium/soft) with the the following options 
-```
-colorscheme.everforest.type = "dark" #default
-colorscheme.everfores.variant = "medium" # default
-```
-
-## Colors
-You may then access the colors with:
-```
-config.colorscheme.everforest.colors.yourcolor
-```
-You can read about the avaliable colors [here](https://github.com/sainnhe/everforest/blob/master/palette.md#highlights)
 
 ## Presets
-To use something like foot, just do ``programs.foot.colors = config.colorscheme.everforest.foot`` once you have imported the flake module. 
+To use something like foot, I do ``programs.foot.colors = config.colorscheme.foot`` once the flake moduleis imported.
 
 The option is an attrset of colors so it can also be merged like this:
 ```
 programs.alacritty.settings = {
     some.config = true;
-} // config.colorscheme.everforest.alacritty;
+} // config.colorscheme.alacritty;
 ```
 
-Currently avaliable presets:
+Curren presets:
 * zathura
 * foot
 * alacritty
@@ -43,7 +36,7 @@ Example `flake.nix` file:
     };
 
     # add everforest flake
-    everforest.url = "github:anewdi/everforest";
+    colors.url = "github:anewdi/colors";
   };
 
   outputs = { home-manager, nixpkgs, ... }@inputs:
@@ -68,16 +61,17 @@ Example `home.nix` file:
 { inputs, pkgs, ... }:
 {
   # add the home manager module
-  imports = [ inputs.everforest.homeManagerModules.default ];
+  imports = [ inputs.colors.homeManagerModules.default ];
 
-  colorscheme.everforest = {
+  colorscheme = {
+      scheme = "everforest"
       type = "light";
       variant = "medium";
   };
 
   programs.foot = {
     enable = true;
-    colors = config.colorscheme.everforest.foot;
+    colors = config.colorscheme.foot;
   };
 
   programs.alacritty = {
@@ -86,7 +80,7 @@ Example `home.nix` file:
       window = {
         decorations = "None";
       };
-    } // config.colorscheme.everforest.alacritty;
+    } // config.colorscheme.alacritty;
   };
 }
 ```

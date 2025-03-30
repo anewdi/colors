@@ -1,3 +1,4 @@
+throw:
 #Brightened bacckground version
 {
   foreground = "#C9C7CD";
