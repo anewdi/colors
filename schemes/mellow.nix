@@ -2,6 +2,7 @@
 #Brightened bacckground version
 {
   foreground = "#C9C7CD";
+  #background = "#161616";
   background = "#292A30";
 
   regular0 = "#27272A";
