@@ -15,6 +15,7 @@ let
     "zathura"
     "zellij"
     "foot"
+    "fuzzel"
   ];
 
   themeVariants = {
