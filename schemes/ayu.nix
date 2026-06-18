@@ -23,6 +23,12 @@ let
       bright6 = "#95e6cb";
       bright7 = "#ffffff";
 
+      selection_foreground = "#212733";
+
+      active_tab_foreground = "#eeeeee";
+      active_tab_background = "#343f4c";
+      inactive_tab_foreground = "#d9d7ce";
+      inactive_tab_background = "#1a1f29";
     };
   };
 in
