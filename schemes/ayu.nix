@@ -2,26 +2,26 @@ variant:
 let
   all = {
     mirage = {
-      foreground = "#CCCAC2";
-      background = "#242936";
+      foreground = "#d9d7ce";
+      background = "#212733";
 
-      regular0 = "#0A0000";
-      regular1 = "#F06B5C";
-      regular2 = "#BFE760";
-      regular3 = "#E6B752";
-      regular4 = "#3BBBF4";
-      regular5 = "#D09FFD";
-      regular6 = "#84CEB5";
-      regular7 = "#D2D6DC";
+      regular0 = "#191e2a";
+      regular1 = "#ed8274";
+      regular2 = "#a6cc70";
+      regular3 = "#fad07b";
+      regular4 = "#6dcbfa";
+      regular5 = "#cfbafa";
+      regular6 = "#90e1c6";
+      regular7 = "#c7c7c7";
 
-      bright0 = "#0A0000";
-      bright1 = "#F39184";
-      bright2 = "#D5FF80";
-      bright3 = "#FFCD66";
-      bright4 = "#73D0FF";
-      bright5 = "#DFBFFF";
-      bright6 = "#95E6CB";
-      bright7 = "#E3E6EA";
+      bright0 = "#191e2a";
+      bright1 = "#f28779";
+      bright2 = "#bae67e";
+      bright3 = "#ffd580";
+      bright4 = "#73d0ff";
+      bright5 = "#d4bfff";
+      bright6 = "#95e6cb";
+      bright7 = "#ffffff";
 
     };
   };
