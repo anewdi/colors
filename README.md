@@ -1,10 +1,14 @@
 A simple flake which I use to store the themes I use.
-Chose colorscheme, type(light/dark) and variant(hard/medium/soft) with the the following options
+Chose colorscheme and and variant(dark/light etc) like this:
 ```
 colorscheme.scheme = "mellow" #default
-colorscheme.type = "dark" #default, only has an effect for everforest
-colorscheme.variant = "medium" # default, only has an effect for everforest
+colorscheme.variant = "dark" #default
+
+# for everforest you can be more specific 
+colorscheme.variant = "dark soft";
 ```
+
+All colors from the scheme can be accessed on `colorscheme.colors.[color]`.
 
 
 ## Presets
@@ -17,7 +21,7 @@ programs.alacritty.settings = {
 } // config.colorscheme.alacritty;
 ```
 
-Curren presets:
+Current presets:
 * zathura
 * foot
 * alacritty

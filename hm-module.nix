@@ -5,26 +5,11 @@ let
 
   # Some applications use without the hashes, so make both accesible
   full = rec {
-    hash = (
-      import ./schemes/${cfg.scheme}.nix {
-        type = cfg.type;
-        variant = cfg.variant;
-        inherit lib;
-      }
-    );
+    hash = import ./schemes/${cfg.scheme}.nix cfg.variant;
     nohash = lib.mapAttrs (name: color: lib.removePrefix "#" color) hash;
   };
 
-  # Function to create uniq option (so that colors are not overridable)
-  mkscheme =
-    name:
-    lib.mkOption {
-      type = with lib.types; uniq anything;
-      default = { };
-      description = "${cfg.scheme} colorscheme for ${name}";
-    };
-
-  themes = [
+  program = [
     "alacritty"
     "wezterm"
     "zathura"
@@ -32,55 +17,61 @@ let
     "foot"
   ];
 
+  themeVariants = {
+    "mellow" = [ "dark" ];
+    "everforest" = [
+      "dark soft"
+      "dark medium"
+      "dark hard"
+      "light soft"
+      "light medium"
+      "light hard"
+    ];
+    "ayu" = [ "mirage" ];
+  };
+
   # Create options for every theme
-  initoptions = builtins.listToAttrs (
-    builtins.map (theme: {
-      name = theme;
-      value = mkscheme "${theme}";
-    }) themes
+  progOptions = builtins.listToAttrs (
+    map (program: {
+      name = program;
+      value = lib.mkOption {
+        type = with lib.types; uniq attrs;
+        default = { };
+        description = "${cfg.scheme} colorscheme for ${program}";
+      };
+    }) program
   );
 
-  # Map the themes to their name in an attrset
-  setscheme = builtins.listToAttrs (
-    builtins.map (theme: {
-      name = theme;
-      value = import ./presets/${theme}.nix full;
-    }) themes
+  # (key) application name  - (value) theme attrset
+  themes = builtins.listToAttrs (
+    map (program: {
+      name = program;
+      value = import ./presets/${program}.nix full;
+    }) program
   );
 in
 {
-
   options.colorscheme = {
     # Options to set variant and types
-    type = lib.mkOption {
-      type = lib.types.enum [
-        "dark"
-        "light"
-      ];
+    variant = lib.mkOption {
+      type = lib.types.enum (themeVariants.${cfg.scheme});
       default = "dark";
     };
-    variant = lib.mkOption {
-      type = lib.types.enum [
-        "hard"
-        "medium"
-        "soft"
-      ];
-      default = "medium";
-    };
+
     scheme = lib.mkOption {
-      type = lib.types.enum [
-        "mellow"
-        "everforest"
-      ];
+      type = lib.types.enum (lib.mapAttrsToList (k: v: k) themeVariants);
       default = "mellow";
     };
 
     # Create the options
-    colors = mkscheme "colors";
-  } // initoptions;
+    colors = lib.mkOption {
+      type = with lib.types; uniq attrs;
+      default = full.hash;
+      description = "all scheme colors";
+    };
+  }
+  // progOptions;
 
   # Set the options so they can not be overridden
-  config.colorscheme = setscheme // {
-    colors = full.hash;
-  };
+  config.colorscheme = themes;
 }
